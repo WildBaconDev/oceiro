@@ -54,4 +54,10 @@ public class GastoController {
         return ResponseEntity.ok(gastoService.consultarGastosPorDia(data));
     }
 
+    @GetMapping("/mes/{data}")
+    @LogExecutionTime
+    public ResponseEntity<List<ConsultaGastoResponseDTO>> consultarGastosPorMes(@PathVariable("data") @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate data) {
+        return ResponseEntity.ok(gastoService.consultarGastosPorMes(data));
+    }
+
 }

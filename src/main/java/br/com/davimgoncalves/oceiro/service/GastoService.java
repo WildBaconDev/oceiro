@@ -79,7 +79,17 @@ public class GastoService {
 
     @LogExecutionTime
     public List<ConsultaGastoResponseDTO> consultarGastosPorDia(LocalDate data) {
-        log.info("method={}; data={};", "consultarGastosPorDia", data);
-        return GastoMapper.INSTANCE.toConsultaGastoResponse(gastoRepository.findByDataBetween(data.atStartOfDay(), data.atTime(LocalTime.MAX)));
+        var dataInicio = data.atStartOfDay();
+        var dataFim = data.atTime(LocalTime.MAX);
+        log.info("method={}; dataRequerida={}; dataInicio={}; dataFim={}", "consultarGastosPorDia", data, dataInicio, dataFim);
+        return GastoMapper.INSTANCE.toConsultaGastoResponse(gastoRepository.findByDataBetween(dataInicio, dataFim));
+    }
+
+    @LogExecutionTime
+    public List<ConsultaGastoResponseDTO> consultarGastosPorMes(LocalDate data) {
+        var dataInicio = data.withDayOfMonth(1).atStartOfDay();
+        var dataFim = data.withDayOfMonth(data.getMonth().length(data.isLeapYear())).atTime(LocalTime.MAX);
+        log.info("method={}; dataRequerida={}; dataInicio={}; dataFim={}", "consultarGastosPorMes", data, dataInicio, dataFim);
+        return GastoMapper.INSTANCE.toConsultaGastoResponse(gastoRepository.findByDataBetween(dataInicio, dataFim));
     }
 }
