@@ -9,6 +9,8 @@ import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.factory.Mappers;
 
+import java.util.List;
+
 @Mapper
 public interface GastoMapper {
 
@@ -24,4 +26,6 @@ public interface GastoMapper {
     GastoResponseDTO toResponseDto(Gasto gasto);
 
     ConsultaGastoResponseDTO toConsultaGastoResponse(Gasto gasto);
+
+    List<ConsultaGastoResponseDTO> toConsultaGastoResponse(List<Gasto> gasto);
 }
