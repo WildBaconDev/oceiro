@@ -2,3 +2,6 @@ spring:
   data:
     mongodb:
       uri: mongodb://localhost:27017/oceiro_db
+jwt:
+  secret: jYHm`=%$Ja&]lbp=^9)%ii=bAvW9i"XfMTL?L_4rCTfw<!E4_wp9)l&aD5Ly:cZ
+  expiration: 600000

@@ -17,7 +17,7 @@ import java.time.LocalDate;
 import java.util.List;
 
 @RestController
-@RequestMapping("/gasto")
+@RequestMapping("/v1/gasto")
 public class GastoController {
 
     @Autowired
