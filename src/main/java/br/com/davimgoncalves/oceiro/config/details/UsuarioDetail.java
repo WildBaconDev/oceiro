@@ -6,7 +6,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import java.util.Collection;
 import java.util.List;
 
-public record UsuarioDetail(String id, String username, String password, List<AuthorityDetail> authorities, Boolean enabled) implements UserDetails {
+public record UsuarioDetail(String id, String email, String password, List<AuthorityDetail> authorities, Boolean enabled) implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
@@ -20,7 +20,7 @@ public record UsuarioDetail(String id, String username, String password, List<Au
 
     @Override
     public String getUsername() {
-        return username;
+        return email;
     }
 
     @Override

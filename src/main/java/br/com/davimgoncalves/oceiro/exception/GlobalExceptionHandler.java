@@ -16,6 +16,12 @@ import java.util.HashMap;
 @RestControllerAdvice
 public class GlobalExceptionHandler {
 
+    @ExceptionHandler(UsuarioJaExistenteException.class)
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    public ErroDTO handleUsuarioJaExistenteException(UsuarioJaExistenteException exception, HttpServletRequest request) {
+        return logAndReturn(HttpStatus.BAD_REQUEST, exception.getMessage(), request.getServletPath());
+    }
+
     @ExceptionHandler(MethodArgumentNotValidException.class)
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     public ErroDTO handleValidationError(MethodArgumentNotValidException exception, HttpServletRequest request) {

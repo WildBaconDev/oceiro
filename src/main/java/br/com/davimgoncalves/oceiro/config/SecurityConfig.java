@@ -1,7 +1,6 @@
 package br.com.davimgoncalves.oceiro.config;
 
 import br.com.davimgoncalves.oceiro.security.JWTAuthenticationFilter;
-import br.com.davimgoncalves.oceiro.service.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

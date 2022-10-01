@@ -1,7 +1,9 @@
 package br.com.davimgoncalves.oceiro.security;
 
 import br.com.davimgoncalves.oceiro.config.details.UsuarioDetail;
-import io.jsonwebtoken.*;
+import io.jsonwebtoken.Claims;
+import io.jsonwebtoken.Jws;
+import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.security.Keys;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
@@ -24,8 +26,9 @@ public class JWTUtil {
         return Jwts.builder()
                 .setSubject(usuarioDetail.getUsername())
                 .claim("role", usuarioDetail.getAuthorities())
-                .setExpiration(new Date(System.currentTimeMillis() + expiration))
                 .signWith(Keys.hmacShaKeyFor(secret.getBytes()))
+                .setExpiration(new Date(System.currentTimeMillis() + expiration))
+                .setIssuedAt(new Date())
                 .compact();
     }
 

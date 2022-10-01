@@ -19,12 +19,12 @@ public class UsuarioDetailService implements UserDetailsService {
 
     @Override
     @LogExecutionTime
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        log.info("method={}; username={};", "loadUserByUsername", username);
-        var usuario = usuarioRepository.findByUsername(username).orElseThrow(() -> {
+    public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
+        log.info("method={}; email={};", "loadUserByUsername", email);
+        var usuario = usuarioRepository.findById(email).orElseThrow(() -> {
             throw new UsernameNotFoundException("Usuario não encontrado.");
         });
-        log.info("method={}; username={}; id={}; mensagem={}", "loadUserByUsername", username, usuario.id(), "Usuario encontrado");
+        log.info("method={}; email={}; mensagem={}", "loadUserByUsername", email, "Usuario encontrado");
         return UsuarioMapper.INSTANCE.toDetail(usuario);
     }
 }

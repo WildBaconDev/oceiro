@@ -6,4 +6,4 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import java.util.List;
 
 @Document("usuario")
-public record Usuario(@Id String id, String email, String username, String password, List<Authority> authorities, Boolean enabled) { }
+public record Usuario(@Id String email, String username, String password, List<Authority> authorities, Boolean enabled) { }
